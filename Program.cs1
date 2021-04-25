@@ -1,0 +1,95 @@
+# StudentGradeBookSystemArray
+using System;
+
+namespace StudentGradeBookSystem
+{
+    class Assignment
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome to Grade Book System!");
+
+            string studentNumber = "2020-00412-BN-0"; //declare + assignment
+            string studentName = "John Dean P. Llano";
+            string studentAdress = "Olivarez Homes South, Binan";
+            int age = 19;
+            string username = "John";
+            string password = "Dean";
+            string course = "DICT";
+            string yearlevel = "1st";
+
+            int i = 0;
+            for (; i < 3; i++)
+            {
+                Console.Write("Enter Username:");
+                string usernameInput = Console.ReadLine();
+
+                Console.Write("Enter Password:");
+                string passwordInput = Console.ReadLine();
+
+                Console.WriteLine();
+                if (usernameInput == username && passwordInput == password)
+                {
+                    Console.WriteLine("STUDENT INFORMATION");
+                    Console.WriteLine("Student Number: " + studentNumber);
+                    Console.WriteLine("Student Name: " + studentName);
+                    Console.WriteLine("Student Address: " + studentAdress);
+                    Console.WriteLine("Student Age: " + age);
+                    Console.WriteLine("Student Coure & Year: " + course + " " + yearlevel);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Username or Password.");
+                }
+            }
+            if (i == 3)
+            {
+                Console.WriteLine("Application will exit...");
+                Environment.Exit(0);
+            }
+
+            var Subjects1 = new[] { "Comprog2", 
+                                         "DiscreteStructures", 
+                                         "UnderstandingTheSelf",
+                                         "HardwareSoftwareInstallationAndMainten", 
+                                         "PhysicalFitness"};
+
+            var Subjects2 = new string[5];
+            double ave = 0;
+            double genAve;
+            Console.WriteLine();
+            Console.WriteLine("INPUT YOUR GRADE!");
+            //iterate through the Subjects1 and get user input Grades to get average!
+            for (int subjectIndex = 0; subjectIndex < Subjects1.Length; subjectIndex++)
+            {
+                Console.Write("SUBJECT " + Subjects1[subjectIndex] + ":");
+                double userInput = Convert.ToDouble(Console.ReadLine());
+                ave += userInput;
+                
+
+                if (userInput >= 75)
+                {
+                    Subjects2[subjectIndex] = Subjects1[subjectIndex];
+                }
+                else if (userInput <= 75)
+                {
+                    Console.Write("");
+                }
+            }
+            genAve = ave / Subjects1.Length;
+            Console.WriteLine();
+            Console.WriteLine("THIS SUBJECT ARE PASSED!:");
+            foreach (var Passed in Subjects2)
+            {
+                    if (!string.IsNullOrEmpty(Passed))
+                    {
+                        Console.WriteLine(Passed);
+                    }
+            }
+            Console.WriteLine("YOUR GENERAL AVERAGE IS: " + genAve);
+
+        }
+    }
+
+}
